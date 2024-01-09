@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table  cellspacing="0" border="2" style="width: 850px;"> 
+        <tr>
+            <th colspan="7">
+                J.S SHAH
+                <br>
+                TAX CONSULTANT
+                <br>
+                MAIN ROAD , SURENDRANAGAR- 363 001
+                <br>
+                PHONE : (02752) 223437
+            </th>
+
+        </tr>
+        <tr>
+            <th>Receipt NO.</th>
+            <td>
+                <p id="receiptno"></p>
+            </td>
+            <th>Receipt Date</th>
+            <td>
+                <p id="date" style="font-size: smaller;"></p>
+            </td>
+            <th>Amount</th>
+            <th colspan="2">
+                <P id="amount"></P>
+            </th>
+        </tr>
+
+        <tr>
+            <th>received from </th>
+            <td colspan="3">
+                <p id="companyname"></p>
+            </td>
+
+            <th>PAID BY :</th>
+            <th colspan="3">
+                CASH
+            </th>
+        </tr>
+
+
+
+<!-- 
+        <tr>
+            <td>BY CASH</td>
+            <td colspan="3">
+                <P>BY CASH</P>
+            </td>
+            <td>DATE</td>
+            <td colspan="2"></td>
+        </tr> -->
+
+        <tr>
+            <th> SR NO</th>
+            <th>PARTICULAR MEMO OF</th>
+            <th colspan="2">MEMO NO</th>
+          
+            <th>AMOUNT RS</th>
+            <th>TDS RS</th>
+            <th>TOTAL RS</th>
+        </tr>
+
+        <tr>
+            <th> 
+                <p id="sr"></p>
+            </th>
+            <td>
+                <p id="select"></p>
+            </td>
+            <td colspan="2">
+                <p id="memo"> 
+
+                </p>
+            </td>
+          
+            <td>
+                <p id="amount1"></p>
+            </td>
+            <td></td>
+            <td>
+                <p id="amount2"></p>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="4">
+                <span style="float: right;">Total : &nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </th>
+            <td>
+                <p id="amount3"></p>
+            </td>
+            <td></td>
+            <td>
+                <p id="amount4"></p>
+            </td>
+        </tr>
+        <tr>
+            <th>Sum in rupees </th>
+            <td colspan="6">
+                <p id="inwords"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <th colspan="2">
+                **Subject to surendranagar jurisdiction
+                <br>
+                **E. & O.E
+            </th>
+
+            <th colspan="5">
+                <h3>FOR J.S SHAH</h3>
+                <P>AUTHORITY SIGNATURE</P>
+            </th>
+        </tr>
+    </table>
+
+
+    <script>
+        var data = window.location.search;
+        var params = new URLSearchParams(data);
+
+        var date = params.get("date");
+        var select = params.get("select");
+        var amount = params.get("amount");
+        var companyname = params.get("companyname");
+        var receiptno = params.get("receiptno");
+        var sr = params.get("sr");
+        var memo = params.get("memo");
+
+
+
+
+
+        var getData = date;
+        var getData1 = select;
+        var getData2 = amount;
+        var getData3 = companyname;
+        var getData4 = receiptno;
+        var getData5 = sr;
+        var getData6 = memo;
+
+
+
+        document.getElementById("date").innerHTML = getData;
+        document.getElementById("select").innerHTML = getData1;
+        document.getElementById("amount").innerHTML = getData2;
+        document.getElementById("amount1").innerHTML = getData2;
+        document.getElementById("amount2").innerHTML = getData2;
+        document.getElementById("amount3").innerHTML = getData2;
+        document.getElementById("amount4").innerHTML = getData2;
+        document.getElementById("companyname").innerHTML = getData3;
+        document.getElementById("receiptno").innerHTML = getData4;
+        document.getElementById("sr").innerHTML = getData5;
+        document.getElementById("memo").innerHTML = getData6;
+
+
+
+
+        function numToWords(number) {
+
+            if (typeof number === 'string') {
+                number = parseInt(number, 10);
+            }
+            if (typeof number === 'number' && isFinite(number)) {
+                number = number.toString(10);
+            } else {
+                return 'This is not a valid number';
+            }
+
+            var digits = number.split('');
+            while (digits.length % 3 !== 0) {
+                digits.unshift('0');
+            }
+
+            var digitsGroup = [];
+            var numberOfGroups = digits.length / 3;
+            for (var i = 0; i < numberOfGroups; i++) {
+                digitsGroup[i] = digits.splice(0, 3);
+            }
+
+            var digitsGroupLen = digitsGroup.length;
+            var numTxt = [
+                [null, 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'], //hundreds
+                [null, 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'], //tens
+                [null, 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'] //ones
+            ];
+            var tenthsDifferent = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'seventeen', 'eighteen', 'nineteen'];
+
+            for (var j = 0; j < digitsGroupLen; j++) {
+                for (var k = 0; k < 3; k++) {
+                    var currentValue = digitsGroup[j][k];
+                    digitsGroup[j][k] = numTxt[k][currentValue];
+                    if (k === 0 && currentValue !== '0') { // !==0 avoids creating a string "null hundred"
+                        digitsGroup[j][k] += ' Hundread ';
+                    } else if (k === 1 && currentValue === '1') { //Changes the value in the tens place and erases the value in the ones place
+                        digitsGroup[j][k] = tenthsDifferent[digitsGroup[j][2]];
+                        digitsGroup[j][2] = 0; //Sets to null. Because it sets the next k to be evaluated, setting this to null doesn't work.
+                    }
+                }
+            }
+
+            for (var l = 0; l < digitsGroupLen; l++) {
+                if (digitsGroup[l][1] && digitsGroup[l][2]) {
+                    digitsGroup[l][1] += '-';
+                }
+                digitsGroup[l].filter(function (e) { return e !== null });
+                digitsGroup[l] = digitsGroup[l].join('');
+            }
+
+            var posfix = [null, 'Thousand', 'Million', 'Billion', 'Trillion', 'Quadrillion', 'Quintillion', 'Sextillion'];
+            if (digitsGroupLen > 1) {
+                var posfixRange = posfix.splice(0, digitsGroupLen).reverse();
+                for (var m = 0; m < digitsGroupLen - 1; m++) { //'-1' prevents adding a null posfix to the last group
+                    if (digitsGroup[m]) {
+                        digitsGroup[m] += ' ' + posfixRange[m];
+                    }
+                }
+            }
+            return digitsGroup.join(' ');
+        }
+
+        document.getElementById("inwords").innerHTML = numToWords(amount) + " Only";
+
+    </script>
+</body>
+
+</html>

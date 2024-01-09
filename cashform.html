@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="text-center"> CASH SYSTEM</h1>
+
+        <div id="demoo"></div>
+        <form method="get" action="cashtable.html" class="was-validated">
+
+            <div class="mb-3 mt-3">
+                <label for="uname" class="form-label">COMPANY NAME : </label>
+                <textarea class="form-control" name="companyname"  cols="9" rows="6.5" required
+                    style="width: 30%;"></textarea>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+            <!-- <div class="d-flex justify-content-evenly">
+                <div class="mb-3 mt-3">
+                    <label for="uname" class="form-label">CLIENT CODE : </label>
+                    <input type="number" class="form-control" name="clientcode" placeholder="Enter username"
+                        name="uname" required style="width: 120%;">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <label for="uname" class="form-label">MEMO NO : </label>
+                    <input type="number" class="form-control" name="memo" placeholder="Enter username" name="uname"
+                        required style="width: 120%;">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+            </div> -->
+
+            <div class="mb-3 mt-3">
+                <label for="uname" class="form-label">Sr no. </label>
+                <input type="number" class="form-control" name="sr" placeholder="Enter username" name="uname"
+                    required style="width: 30%;">
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+
+            <div class="mb-3 mt-3">
+                <label for="uname" class="form-label">Receipt NO : </label>
+                <input type="number" class="form-control" name="receiptno" placeholder="Enter username" name="uname"
+                    required style="width: 30%;">
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="uname" class="form-label">MEMO NO : </label>
+                <input type="number" class="form-control" name="memo" placeholder="Enter username" name="uname"
+                    required style="width: 30%;">
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            
+
+            <div class="mb-3 mt-3">
+                <label for="uname" class="form-label">Receipt Date:</label>
+                <input type="date" class="form-control"  name="date" name="uname" required
+                    style="width: 30%;" value="dd/mm/yy"
+                    >
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+        
+                <label  for="uname" class="form-label"> CHARGES FOR : </label>
+                <select class="form-select" name="select" required style="width: 30%;" id="select">
+                    <option value="">NONE</option>
+                    <option value="GST COMPOSITION FEE">GST COMPOSITION FEE</option>
+                    <option value="GST INCOME TAX RETURN FEE">GST INCOME TAX RETURN FEE</option>
+                    <option value="GST REGULAR FEE">GST REGULAR FEE</option>
+                    <option value="GST & INCOME TAX & TDS RETURN FEE">GST & INCOME TAX & TDS RETURN FEE</option>
+                    <option value="GST & INCOME TAX FEE">GST & INCOME TAX FEE</option>
+
+                </select>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+     
+
+            <div style="margin-right: 100px;">
+                <label for="uname" class="form-label">AMOUNT </label>
+                <input type="number" class="form-control" name="amount" placeholder="Enter username" name="uname"
+                    required style="width: 30%;">
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+        </div>
+
+
+            <center>
+                <button class="btn btn-primary" onclick="abc()" type="submit">SUBMIT</button>
+            </center>
+        </form>
+
+    </div>
+</body>
+</html>
